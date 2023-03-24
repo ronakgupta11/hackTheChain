@@ -1,4 +1,3 @@
-import { useState } from 'react'
 
 import './App.css'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
