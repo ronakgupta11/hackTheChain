@@ -1,6 +1,6 @@
 
 import './App.css'
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
+
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
@@ -9,19 +9,18 @@ import {
   PhantomWalletAdapter
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
-require("@solana/wallet-adapter-react-ui/styles.css");
-
+import "@solana/wallet-adapter-react-ui/styles.css"
+import { Navbar } from './Navbar';
 
 function App() {
 const network = WalletAdapterNetwork.Devnet;
-const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-const wallets = useMemo(
-  () => [
+const endpoint = clusterApiUrl(network);
+const wallets = [
     new PhantomWalletAdapter(),
     new GlowWalletAdapter()
-  ],
-  [network]
-);
+  ]
+  
+
 
 
   return (
@@ -29,7 +28,7 @@ const wallets = useMemo(
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
           <div className='app'>
-            <WalletMultiButton/>
+            <Navbar/>
           </div>
         </WalletModalProvider>
       </WalletProvider>
